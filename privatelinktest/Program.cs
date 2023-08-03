@@ -15,8 +15,9 @@ namespace privatelinktest
             // Load configuration from Azure App Configuration
             builder.Configuration.AddAzureAppConfiguration(options =>
             {
-               string connectionString = "Endpoint=https://jkappconfig.azconfig.io;Id=Hyv5;Secret=ZafIQdMgZVdeozZjBkM3LhDz+bi8A6lmv+zx8j/a/6E=";
-               string appConfigEndPoint = "https://jkappconfig.azconfig.io";
+                //string connectionString = "Endpoint=https://jkappconfig.azconfig.io;Id=Hyv5;Secret=ZafIQdMgZVdeozZjBkM3LhDz+bi8A6lmv+zx8j/a/6E=";
+                string connectionString = Environment.GetEnvironmentVariable("APP_CONFIG_CONNECTION");
+                // string appConfigEndPoint = "https://jkappconfig.azconfig.io";
                 options.Connect(connectionString)
                 //       options.Connect(new Uri(appConfigEndPoint), new DefaultAzureCredential())
                        // Load all keys that start with `WebDemo:` and have no label

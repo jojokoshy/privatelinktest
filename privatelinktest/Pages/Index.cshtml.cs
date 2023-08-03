@@ -4,8 +4,8 @@ using Azure.Security.KeyVault.Secrets;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Azure.Cosmos;
-using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
+//using Azure.Identity;
+//using Azure.Security.KeyVault.Secrets;
 using Microsoft.Extensions.Options;
 
 namespace privatelinktest.Pages
@@ -22,7 +22,7 @@ namespace privatelinktest.Pages
         {
             Settings = options.Value;
             _logger = logger;
-            keyVaultName = "adme-we-kv";// Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+            keyVaultName =  Environment.GetEnvironmentVariable("KEY_VAULT_NAME"); // "adme-we-kv";//
         }
         
         //method for looping through cosmos db
@@ -122,38 +122,6 @@ namespace privatelinktest.Pages
             };
         }
 
-        public void onTest()
-        {
-            // Define the Azure App Configuration endpoint and the Managed Identity Client ID (if needed).
-            string appConfigEndpoint = "https://<your-app-config-name>.azconfig.io"; // Replace with your App Configuration endpoint
-            string managedIdentityClientId = null; // Set this if you have specific Managed Identity to use, or leave it as null for system-assigned.
-
-            // Create an instance of ManagedIdentityCredential with the Managed Identity Client ID (optional).
-            ManagedIdentityCredential managedIdentityCredential = null;
-            if (!string.IsNullOrEmpty(managedIdentityClientId))
-            {
-                managedIdentityCredential = new ManagedIdentityCredential(managedIdentityClientId);
-            }
-            else
-            {
-                managedIdentityCredential = new ManagedIdentityCredential();
-            }
-
-            // Create a configuration client with the Managed Identity Credential.
-            ConfigurationClient configurationClient = new ConfigurationClient(new Uri(appConfigEndpoint), managedIdentityCredential);
-
-            // Now, you can use the configuration client to access your App Configuration settings.
-            string key = "YourSettingKey"; // Replace with your actual setting key
-            ConfigurationSetting setting = configurationClient.GetConfigurationSetting(key);
-
-            if (setting != null)
-            {
-                Console.WriteLine($"Setting key: {setting.Key}, Value: {setting.Value}");
-            }
-            else
-            {
-                Console.WriteLine("Setting not found.");
-            }
-        }
+         
     }
 }
