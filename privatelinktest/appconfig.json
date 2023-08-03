@@ -1,0 +1,24 @@
+{
+  "WebDemo": {
+    "Production": {
+      "Default": true,
+      "Level": "Information",
+      "BackgroundColor": "Red",
+      "Font": "Arial",
+      "FontSize": 10,
+      "Message": "This is a production message"
+
+
+    },
+    "Test": {
+      "Level": "Debug",
+      "Environment": "Test",
+      "BackgroundColor": "Blue",
+      "Font": "Times New Roman",
+      "FontSize": 12,
+      "Message": "This is a test message"
+
+
+    }
+  }
+}

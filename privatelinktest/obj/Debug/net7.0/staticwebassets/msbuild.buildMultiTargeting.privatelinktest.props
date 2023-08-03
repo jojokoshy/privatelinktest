@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\privatelinktest.props" />
+</Project>
